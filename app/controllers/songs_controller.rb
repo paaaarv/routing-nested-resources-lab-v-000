@@ -21,7 +21,7 @@ class SongsController < ApplicationController
       else
         redirect_to artists_path
       end
-      if !@song.valid?
+      if !@song
         redirect_to artist_songs_path(:artist_id)
       end
     else
