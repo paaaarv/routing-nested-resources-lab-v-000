@@ -30,7 +30,7 @@ class SongsController < ApplicationController
         flash[:alert] = "Artist not found."
         redirect_to artists_path
       end
-      
+
     else
       @song = Song.find(params[:id])
     end
