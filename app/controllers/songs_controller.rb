@@ -1,7 +1,6 @@
 require 'pry'
 
 class SongsController < ApplicationController
-  enable :sessions
   use Rack::Flash
 
   def index
