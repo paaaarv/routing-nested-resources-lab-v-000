@@ -1,12 +1,16 @@
 require 'pry'
 
 class SongsController < ApplicationController
+  enable :sessions
+  use Rack::Flash 
+  
   def index
     if params[:artist_id]
       @artist = Artist.find_by(id: params[:artist_id])
       if @artist
         @songs = @artist.songs
       else
+        flash[:message] = "Artist not found."
         redirect_to artists_path
       end
     else
@@ -19,9 +23,11 @@ class SongsController < ApplicationController
       if Artist.find(params[:artist_id])
         @song = Song.find_by(id: params[:id])
       else
+        flash[:message] = "Artist not found."
         redirect_to artists_path
       end
       if !@song
+        flash[:message] = "Song not found."
         redirect_to songs_path
       end
     else
