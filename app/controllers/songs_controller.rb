@@ -3,6 +3,7 @@ require 'pry'
 class SongsController < ApplicationController
   def index
     if params[:artist_id]
+      binding.pry
       @artist = Artist.find(params[:artist_id])
       if @artist.valid?
         @songs = @artist.songs
