@@ -9,7 +9,7 @@ class SongsController < ApplicationController
       if @artist
         @songs = @artist.songs
       else
-        flash[:message] = "Artist not found."
+        flash[:alert] = "Artist not found."
         redirect_to artists_path
       end
     else
@@ -22,11 +22,11 @@ class SongsController < ApplicationController
       if Artist.find(params[:artist_id])
         @song = Song.find_by(id: params[:id])
       else
-        flash[:message] = "Artist not found."
+        flash[:alert] = "Artist not found."
         redirect_to artists_path
       end
       if !@song
-        flash[:message] = "Song not found."
+        flash[:alert] = "Song not found."
         redirect_to songs_path
       end
     else
