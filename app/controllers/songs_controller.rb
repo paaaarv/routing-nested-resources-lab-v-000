@@ -22,7 +22,7 @@ class SongsController < ApplicationController
         redirect_to artists_path
       end
       if !@song
-        redirect_to artist_songs_path(:artist_id)
+        redirect_to songs_path
       end
     else
       @song = Song.find(params[:id])
